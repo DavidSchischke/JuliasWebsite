@@ -1,0 +1,115 @@
+---
+import { Image } from 'astro:assets';
+import consultingImg from '../../assets/Trainingseinblicke-Julia-Blum-Personal-Training-Koeln-5.jpg';
+
+const qualifications = [
+  "Staatlich geprüfte Personal Trainerin (B.A. Sportwissenschaft)",
+  "Krankenkassenanerkannte Kursleiterin (ZPP-zertifiziert)",
+  "Spezialisierung: Prä- & Postnataltraining",
+  "Spezialisierung: Rückengesundheit & funktionelle Bewegung",
+  "Mitglied bei PersonalFitness.de",
+];
+
+const values = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>`,
+    title: "Individuell",
+    text: "Kein Mensch ist wie der andere. Deshalb gibt es bei mir keine Einheitsprogramme – nur Pläne, die wirklich zu dir passen.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`,
+    title: "Einfühlsam",
+    text: "Ich höre zu, bevor ich trainiere. Dein Tempo, deine Geschichte und deine Grenzen sind der Ausgangspunkt für alles.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+    title: "Nachhaltig",
+    text: "Schnelle Erfolge interessieren mich weniger als langfristige Veränderung. Wir bauen Gewohnheiten, die bleiben.",
+  },
+];
+---
+
+<section id="ueber-mich" class="py-24 px-5 bg-brand-50">
+  <div class="mx-auto max-w-6xl">
+    <!-- Top: 2-col bio -->
+    <div class="grid md:grid-cols-2 gap-14 items-center mb-20">
+      <!-- Photo with PersonalFitness badge -->
+      <div class="relative">
+        <div class="rounded-2xl overflow-hidden aspect-[4/3] shadow-md">
+          <Image
+            src={consultingImg}
+            alt="Julia Blum im Gespräch mit einer Kundin auf einer Trainingsmatte im Park"
+            class="w-full h-full object-cover object-center"
+            widths={[600, 900]}
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
+        <!-- PersonalFitness badge -->
+        <div class="absolute -bottom-5 -right-4 md:-right-6">
+          <a
+            href="https://www.personalfitness.de/suche/trainer/9243"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Julia Blum auf PersonalFitness.de – Bewertungen ansehen"
+          >
+            <img
+              src="https://www.personalfitness.de/embleme/9243.png"
+              alt="PersonalFitness Bewertungen"
+              width="120"
+              height="120"
+              loading="lazy"
+              class="drop-shadow-lg"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div>
+        <p class="text-brand-500 text-sm font-semibold uppercase tracking-widest mb-4">
+          Über mich
+        </p>
+        <h2
+          class="text-4xl md:text-5xl text-stone-900 mb-6 leading-tight"
+          style="font-family: 'Playfair Display', Georgia, serif;"
+        >
+          Bewegung, die<br />wirklich passt
+        </h2>
+        <div class="space-y-4 text-stone-600 text-base leading-relaxed">
+          <p>
+            Sport hat mein Leben geprägt – und mich gelehrt, dass Bewegung so viel mehr ist als ein Mittel zum Zweck. Sie ist Ausdruck, Ausgleich und eine der besten Investitionen in die eigene Gesundheit.
+          </p>
+          <p>
+            Als Personal Trainerin in Köln Lindenthal begleite ich Menschen jeden Alters und Fitnessniveaus. Meine Klientinnen und Klienten schätzen besonders, dass ich mir wirklich Zeit nehme – für ein gründliches Erstgespräch, für sorgfältige Planung und für ehrliches Feedback.
+          </p>
+          <p>
+            Ob du gerade nach deiner Schwangerschaft in deinen Körper zurückfindest, mit Rückenproblemen kämpfst oder einfach gesünder und aktiver leben möchtest – ich bin deine Ansprechpartnerin.
+          </p>
+        </div>
+
+        <!-- Qualifications list -->
+        <div class="mt-8 space-y-2.5">
+          {qualifications.map((q) => (
+            <div class="flex items-start gap-3">
+              <svg class="w-4 h-4 mt-0.5 shrink-0 text-brand-400 fill-current" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zm3.28 5.28a.75.75 0 00-1.06-1.06L7 8.44 5.78 7.22a.75.75 0 00-1.06 1.06l1.75 1.75a.75.75 0 001.06 0l3.75-3.75z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-sm text-stone-700">{q}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Values row -->
+    <div class="grid sm:grid-cols-3 gap-6">
+      {values.map((v) => (
+        <div class="bg-white rounded-2xl p-7 border border-brand-100 shadow-sm">
+          <div class="w-11 h-11 rounded-xl bg-brand-500 text-white flex items-center justify-center mb-4" set:html={v.icon} />
+          <h3 class="text-base font-semibold text-stone-900 mb-2">{v.title}</h3>
+          <p class="text-sm text-stone-500 leading-relaxed">{v.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

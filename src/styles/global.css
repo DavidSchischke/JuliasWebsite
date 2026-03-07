@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+
+  /* Julia's brand green — primary: #506a30 (logo/navbar), accent: #8cc63f (heartbeat line) */
+  --color-brand-50:  #f2f7e8;
+  --color-brand-100: #ddeebb;
+  --color-brand-200: #b8d98a;
+  --color-brand-300: #8cc63f;
+  --color-brand-400: #6a8a45;
+  --color-brand-500: #506a30;
+  --color-brand-600: #3d5223;
+  --color-brand-700: #2e3d1a;
+  --color-brand-900: #1a2210;
+  --color-brand-950: #0e1309;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #fafaf9;
+  color: #1c1917;
+}

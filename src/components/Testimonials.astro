@@ -1,0 +1,73 @@
+---
+const testimonials = [
+  {
+    quote:
+      "Julia changed my relationship with exercise completely. I used to dread the gym — now it's the best part of my day. Down 18kg and honestly never felt better.",
+    name: "Sarah M.",
+    role: "Client for 14 months",
+    initials: "SM",
+  },
+  {
+    quote:
+      "As a busy mum of three, I needed something flexible and realistic. Julia's online coaching fit perfectly around my schedule and I saw results within the first month.",
+    name: "Rachel T.",
+    role: "Online Coaching Client",
+    initials: "RT",
+  },
+  {
+    quote:
+      "I came to Julia after recovering from a back injury. Her knowledge and care meant I could train safely, get strong, and finally feel confident in my body again.",
+    name: "James O.",
+    role: "1-on-1 Training Client",
+    initials: "JO",
+  },
+];
+---
+
+<section id="testimonials" class="py-24 px-5 bg-stone-900">
+  <div class="mx-auto max-w-6xl">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="text-[--color-brand-300] text-sm font-semibold uppercase tracking-widest mb-4">
+        Kind Words
+      </p>
+      <h2
+        class="text-4xl md:text-5xl text-white mb-4 leading-tight"
+        style="font-family: 'Playfair Display', Georgia, serif;"
+      >
+        Real results, real people
+      </h2>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid md:grid-cols-3 gap-6">
+      {testimonials.map((t) => (
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-7 flex flex-col gap-5">
+          <!-- Stars -->
+          <div class="flex gap-1" aria-label="5 stars">
+            {Array.from({ length: 5 }).map(() => (
+              <svg class="w-4 h-4 text-[--color-brand-400]" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+
+          <blockquote class="text-stone-300 text-sm leading-relaxed flex-1">
+            &ldquo;{t.quote}&rdquo;
+          </blockquote>
+
+          <!-- Author -->
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-[--color-brand-600] flex items-center justify-center text-white text-xs font-bold shrink-0">
+              {t.initials}
+            </div>
+            <div>
+              <p class="text-white text-sm font-semibold">{t.name}</p>
+              <p class="text-stone-500 text-xs">{t.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

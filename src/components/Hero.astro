@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import heroImg from '../../assets/Julia-Blum-Personal-Training-5.jpg';
+---
+
+<section id="intro" class="min-h-screen pt-[72px] flex flex-col md:flex-row">
+  <!-- Left: text content — warm brand-50 background -->
+  <div class="flex-1 flex items-center justify-center px-6 py-16 md:py-24 bg-brand-50 order-2 md:order-1">
+    <div class="max-w-lg">
+      <p class="text-brand-500 text-sm font-semibold uppercase tracking-[0.18em] mb-5">
+        Personal Training · Köln Lindenthal
+      </p>
+
+      <h1
+        class="text-stone-900 text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6"
+        style="font-family: 'Playfair Display', Georgia, serif;"
+      >
+        Hallo,<br />ich bin Julia!
+      </h1>
+
+      <p class="text-stone-700 text-lg leading-relaxed mb-5">
+        Deine Personal Trainerin aus Köln Lindenthal. Ich glaube, dass nachhaltige Veränderung entsteht, wenn Training wirklich zu dir passt – zu deinem Körper, deinem Alltag und deinen Zielen.
+      </p>
+
+      <p class="text-stone-500 text-base leading-relaxed mb-8">
+        Mit viel Einfühlungsvermögen und echter Leidenschaft begleite ich dich auf deinem ganz persönlichen Weg – egal ob du gerade anfängst, nach einer Pause zurückkehrst oder gezielt an deiner Leistung arbeitest.
+      </p>
+
+      <!-- Qualification badges -->
+      <div class="flex flex-wrap gap-2 mb-10">
+        {[
+          "Zertifizierte Personal Trainerin",
+          "Krankenkassenanerkannte Kursleiterin",
+          "Prä- & Postnataltraining",
+        ].map((badge) => (
+          <span class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-700 bg-brand-100 border border-brand-200 px-3 py-1.5 rounded-full">
+            <svg class="w-2.5 h-2.5 shrink-0 text-brand-400 fill-current" viewBox="0 0 8 8">
+              <circle cx="4" cy="4" r="4"/>
+            </svg>
+            {badge}
+          </span>
+        ))}
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a
+          href="#kontakt"
+          class="inline-block text-center bg-brand-500 hover:bg-brand-600 text-white font-semibold px-8 py-4 rounded-full text-sm transition-colors shadow-sm"
+        >
+          Kontakt aufnehmen
+        </a>
+        <a
+          href="#angebote"
+          class="inline-block text-center border border-brand-200 hover:border-brand-400 hover:bg-brand-100 text-brand-700 font-semibold px-8 py-4 rounded-full text-sm transition-colors"
+        >
+          Meine Angebote
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: photo -->
+  <div class="w-full md:w-[45%] lg:w-[42%] min-h-[60vw] md:min-h-0 order-1 md:order-2 overflow-hidden">
+    <Image
+      src={heroImg}
+      alt="Julia Blum, Personal Trainerin aus Köln, lächelt in einem Rapsfeld"
+      class="w-full h-full object-cover object-center"
+      widths={[600, 900, 1200]}
+      sizes="(max-width: 768px) 100vw, 45vw"
+    />
+  </div>
+</section>
