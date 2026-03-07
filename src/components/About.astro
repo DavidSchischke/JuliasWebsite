@@ -29,7 +29,7 @@ const values = [
 ];
 ---
 
-<section id="ueber-mich" class="py-24 px-5 bg-brand-50">
+<section id="ueber-mich" class="relative z-[2] -mb-14 py-24 px-5 bg-brand-50">
   <div class="mx-auto max-w-6xl">
     <!-- Top: 2-col bio -->
     <div class="grid md:grid-cols-2 gap-14 items-center mb-20">
@@ -71,7 +71,6 @@ const values = [
         </p>
         <h2
           class="text-4xl md:text-5xl text-stone-900 mb-6 leading-tight"
-          style="font-family: 'Playfair Display', Georgia, serif;"
         >
           Bewegung, die<br />wirklich passt
         </h2>
@@ -111,5 +110,12 @@ const values = [
         </div>
       ))}
     </div>
+  </div>
+
+  <!-- Diagonal divider → white wedge pointing into Contact -->
+  <div class="absolute bottom-0 inset-x-0 h-14 pointer-events-none" aria-hidden="true">
+    <svg viewBox="0 0 1440 56" preserveAspectRatio="none" class="w-full h-full">
+      <polygon points="0,56 1440,0 1440,56" fill="white" />
+    </svg>
   </div>
 </section>

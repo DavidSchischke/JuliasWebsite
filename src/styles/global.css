@@ -2,7 +2,6 @@
 
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Playfair Display', Georgia, serif;
 
   /* Julia's brand green — primary: #506a30 (logo/navbar), accent: #8cc63f (heartbeat line) */
   --color-brand-50:  #f2f7e8;
@@ -25,4 +24,10 @@ body {
   font-family: var(--font-sans);
   background-color: #fafaf9;
   color: #1c1917;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.03em;
 }
