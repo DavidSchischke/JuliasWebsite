@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://davidschischke.github.io/JuliasWebsite/sitemap-index.xml

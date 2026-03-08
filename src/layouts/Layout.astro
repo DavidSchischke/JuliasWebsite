@@ -1,15 +1,21 @@
 ---
 import '../styles/global.css';
+import webicon from '../../assets/Webicon_klein_neu.png';
 
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
 
 const {
   title = "Julia Blum Personal Training | Köln Lindenthal",
   description = "Zertifizierte Personal Trainerin aus Köln Lindenthal. Individuelles Training, das wirklich zu dir passt – 1:1, online, Gruppentraining und krankenkassenanerkannte Kurse.",
+  noindex = false,
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(webicon.src, Astro.site);
 ---
 
 <html lang="de">
@@ -17,9 +23,28 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
-    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
-    <meta name="generator" content={Astro.generator} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href={webicon.src} />
+    <link rel="apple-touch-icon" href={webicon.src} />
+    <meta name="theme-color" content="#506a30" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Julia Blum Personal Training" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,44 +60,29 @@ const {
     <!-- Preview password gate — remove this block before going live -->
     <div id="pw-gate" class="fixed inset-0 z-[9999] flex items-center justify-center bg-brand-900 px-5" style="display:none!important">
       <div class="w-full max-w-sm bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center gap-5">
-        <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" class="w-10 h-10 opacity-40" />
+        <img src={webicon.src} alt="" class="w-10 h-10 opacity-40" />
         <div class="text-center">
           <h1 class="text-lg font-semibold text-stone-900 mb-1">Vorschau</h1>
           <p class="text-sm text-stone-500">Bitte gib das Passwort ein, um die Seite anzusehen.</p>
         </div>
-        <input
-          id="pw-input"
-          type="password"
-          placeholder="Passwort"
-          autocomplete="current-password"
-          class="w-full rounded-xl border border-stone-200 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-brand-400"
-        />
+        <input id="pw-input" type="password" placeholder="Passwort" autocomplete="current-password"
+          class="w-full rounded-xl border border-stone-200 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-brand-400" />
         <p id="pw-error" class="hidden text-xs text-red-500">Falsches Passwort. Bitte nochmal versuchen.</p>
-        <button
-          id="pw-submit"
-          class="w-full bg-brand-500 hover:bg-brand-600 text-white font-semibold py-3 rounded-xl text-sm transition-colors"
-        >
-          Weiter
-        </button>
+        <button id="pw-submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-semibold py-3 rounded-xl text-sm transition-colors">Weiter</button>
       </div>
     </div>
-
     <script>
-      // SHA-256 of "JuliaPreview2026"
       const HASH = "d153c3aa425e01c1e55bc5cc5988ab7c8c59dd98e44089001f0afe1a64e00686";
-      const KEY  = "__preview_auth";
+      const KEY = "__preview_auth";
       const gate = document.getElementById("pw-gate")!;
-
       async function sha256(str: string) {
         const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
         return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
       }
-
       if (sessionStorage.getItem(KEY) !== "1") {
-        gate.style.cssText = "";          // remove the display:none!important override → gate shows
+        gate.style.cssText = "";
         document.getElementById("pw-input")?.focus();
       }
-
       async function attempt() {
         const val = (document.getElementById("pw-input") as HTMLInputElement).value;
         if (await sha256(val) === HASH) {
@@ -83,14 +93,10 @@ const {
           (document.getElementById("pw-input") as HTMLInputElement).value = "";
         }
       }
-
       document.getElementById("pw-submit")?.addEventListener("click", attempt);
-      document.getElementById("pw-input")?.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") attempt();
-      });
+      document.getElementById("pw-input")?.addEventListener("keydown", (e) => { if (e.key === "Enter") attempt(); });
     </script>
     <!-- End preview password gate -->
-
     <slot />
   </body>
 </html>
