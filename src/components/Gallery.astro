@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import img01 from '../../assets/Trainingseinblicke-Julia-Blum-Personal-Training-Koeln-4.jpg';
+import img02 from '../../assets/Julia-Blum-Personal-Training-Trainingseinblicke-Krafttraining-1.jpg';
+import img03 from '../../assets/Trainingseinblicke-Julia-Blum-Personal-Training-Koeln-7.jpg';
+import img04 from '../../assets/Julia-Blum-Personal-Training-Trainingseinblicke-Dehnen-1.jpg';
+import img05 from '../../assets/Trainingseinblicke-Julia-Blum-Personal-Training-Koeln-9.jpg';
+import img06 from '../../assets/Julia-Blum-SuperMama-Fitness.jpg';
+import img07 from '../../assets/Trainingseinblicke-Julia-Blum-Personal-Training-Koeln-12.jpg';
+import img08 from '../../assets/Julia-Blum-Personal-Training-Trainingseinblicke-Krafttraining-4.jpg';
+import img09 from '../../assets/Julia-Blum-Personal-Training-Trainingseinblicke-Dehnen-2.jpg';
+import img10 from '../../assets/Trainingseinblicke-Julia-Blum-Personal-Training-Koeln-5.jpg';
+import img11 from '../../assets/Julia-Blum-Personal-Training-Trainingseinblicke-Krafttraining-5.jpg';
+
+const photos = [img01, img02, img03, img04, img05, img06, img07, img08, img09, img10, img11];
+---
+
+<section class="relative z-[2] -mb-20 py-20 bg-white overflow-hidden">
+  <div class="mx-auto max-w-6xl px-5 mb-10 text-center">
+    <p class="text-brand-500 text-sm font-semibold uppercase tracking-widest mb-3">
+      Trainingseindrücke
+    </p>
+    <h2 class="text-3xl md:text-4xl text-stone-900 mb-4">
+      Einblicke in meine Arbeit
+    </h2>
+    <p class="text-stone-500 text-base leading-relaxed max-w-xl mx-auto">
+      Immer wenn möglich, trainiere ich mit meinen Klientinnen und Klienten draußen – im Wald, auf der Wiese oder auf dem Feld. Frische Luft und Natur tun Körper und Seele gleichzeitig gut.
+    </p>
+  </div>
+
+  <div class="overflow-hidden">
+      <div class="gallery-track flex gap-5 w-max">
+        {[...photos, ...photos].map((photo, i) => (
+          <div class="h-64 md:h-72 w-72 md:w-80 shrink-0 rounded-2xl overflow-hidden shadow-sm">
+            <Image
+              src={photo}
+              alt={`Trainingseinblick ${(i % photos.length) + 1}`}
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              widths={[400, 600]}
+              sizes="320px"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Diagonal divider → brand-50 wedge pointing into Contact -->
+  <div class="absolute bottom-0 inset-x-0 h-20 pointer-events-none" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="w-full h-full">
+      <path d="M 0,80 L 0,50 C 260,36 480,74 720,58 C 940,44 1160,78 1440,62 L 1440,80 Z" fill="#f2f7e8" />
+    </svg>
+  </div>
+</section>
+
+<style>
+  .gallery-track {
+    animation: gallery-scroll 70s linear infinite;
+  }
+  .gallery-track:hover {
+    animation-play-state: paused;
+  }
+  @keyframes gallery-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+</style>

@@ -60,14 +60,34 @@ import heroImg from '../../assets/Julia-Blum-Personal-Training-5.jpg';
   </div>
 
   <!-- Right: photo -->
-  <div class="w-full md:w-[45%] lg:w-[42%] min-h-[60vw] md:min-h-0 order-1 md:order-2 overflow-hidden">
-    <Image
-      src={heroImg}
-      alt="Julia Blum, Personal Trainerin aus Köln, lächelt in einem Rapsfeld"
-      class="w-full h-full object-cover object-center"
-      widths={[600, 900, 1200]}
-      sizes="(max-width: 768px) 100vw, 45vw"
-    />
+  <div class="relative w-full md:w-[45%] lg:w-[42%] min-h-[60vw] md:min-h-0 order-1 md:order-2">
+    <div class="absolute inset-0 overflow-hidden">
+      <Image
+        src={heroImg}
+        alt="Julia Blum, Personal Trainerin aus Köln, lächelt in einem Rapsfeld"
+        class="w-full h-full object-cover object-center"
+        widths={[600, 900, 1200]}
+        sizes="(max-width: 768px) 100vw, 45vw"
+      />
+    </div>
+    <!-- PersonalFitness badge overlaid on photo -->
+    <div class="absolute bottom-4 left-4 z-10">
+      <a
+        href="https://www.personalfitness.de/suche/trainer/9243"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Julia Blum auf PersonalFitness.de – Bewertungen ansehen"
+      >
+        <img
+          src="https://www.personalfitness.de/embleme/9243.png"
+          alt="PersonalFitness Bewertungen"
+          width="100"
+          height="100"
+          loading="lazy"
+          class="drop-shadow-xl"
+        />
+      </a>
+    </div>
   </div>
 
   <!-- Diagonal divider → white wedge pointing into Services -->
