@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Betriebliches Gesundheitsmanagement | Julia Blum Personal Training"
+  description="Julia Blum entwickelt maßgeschneiderte BGM-Programme für Unternehmen in Köln – von Bewegungspausen bis zu Gesundheitstagen."
+>
+  <Nav />
+
+  <main class="min-h-screen flex flex-col bg-brand-50 pt-[72px]">
+    <!-- Hero area -->
+    <section class="flex-1 flex items-center justify-center px-5 py-24">
+      <div class="mx-auto max-w-2xl text-center">
+
+        <!-- Eyebrow -->
+        <p class="text-brand-500 text-sm font-semibold uppercase tracking-widest mb-6">
+          Für Unternehmen
+        </p>
+
+        <!-- Heading -->
+        <h1 class="text-stone-900 text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6">
+          Betriebliches<br />Gesundheitsmanagement
+        </h1>
+
+        <!-- Body -->
+        <p class="text-stone-600 text-lg leading-relaxed mb-4 max-w-xl mx-auto">
+          Gesunde, motivierte Mitarbeitende sind der Kern eines erfolgreichen Unternehmens. Ich entwickle mit euch maßgeschneiderte BGM-Programme – von Bewegungspausen bis zu Gesundheitstagen.
+        </p>
+
+        <!-- Coming soon badge -->
+        <div class="inline-flex items-center gap-2 bg-white border border-brand-200 text-brand-600 text-sm font-medium px-5 py-2.5 rounded-full shadow-sm mb-10">
+          <svg class="w-4 h-4 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Diese Seite ist in Kürze verfügbar
+        </div>
+
+        <!-- What's coming -->
+        <div class="grid sm:grid-cols-3 gap-4 mb-12 text-left">
+          {[
+            {
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
+              title: "Workshops & Kurse",
+              text: "Rückengesundheit, Stressmanagement und Bewegung am Arbeitsplatz.",
+            },
+            {
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>`,
+              title: "Maßgeschneiderte Programme",
+              text: "Angebote, die zu eurem Unternehmen, eurem Team und euren Zielen passen.",
+            },
+            {
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>`,
+              title: "Zertifiziert & anerkannt",
+              text: "Krankenkassenanerkannte Kurse – Bezuschussung durch den Arbeitgeber möglich.",
+            },
+          ].map((item) => (
+            <div class="bg-white rounded-2xl p-5 border border-brand-100 shadow-sm">
+              <span class="text-brand-500 [&>svg]:inline mb-3 block" set:html={item.icon} />
+              <h3 class="text-sm font-semibold text-stone-900 mb-1">{item.title}</h3>
+              <p class="text-xs text-stone-500 leading-relaxed">{item.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href={`mailto:hello@juliablum-personaltraining.de?subject=BGM-Anfrage`}
+            class="inline-block text-center bg-brand-500 hover:bg-brand-600 text-white font-semibold px-8 py-4 rounded-full text-sm transition-colors shadow-sm"
+          >
+            Jetzt Kontakt aufnehmen
+          </a>
+          <a
+            href={`${import.meta.env.BASE_URL}/`}
+            class="inline-block text-center border border-brand-200 hover:border-brand-400 hover:bg-brand-100 text-brand-700 font-semibold px-8 py-4 rounded-full text-sm transition-colors"
+          >
+            Entdecke meine anderen Angebote →
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
