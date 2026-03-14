@@ -2,6 +2,33 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+
+const offerings = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
+    title: "Workshops & Kurse",
+    text: "Rückengesundheit, Stressmanagement und Bewegung am Arbeitsplatz – praxisnah und auf euer Team abgestimmt.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>`,
+    title: "Maßgeschneiderte Programme",
+    text: "Angebote, die zu eurem Unternehmen, eurem Team und euren Zielen passen – online oder vor Ort.",
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>`,
+    title: "Zertifizierte Präventionskurse",
+    text: "Bezuschussung durch die Krankenkasse möglich.",
+  },
+];
+
+const clients = [
+  "Deutsche Sporthochschule Köln",
+  "UniSport der Universität zu Köln",
+  "Schauspiel Köln",
+  "SoCura Köln",
+  "Württembergische Versicherung Köln",
+  "IBM Köln",
+];
 ---
 
 <Layout
@@ -10,62 +37,57 @@ import Footer from '../components/Footer.astro';
 >
   <Nav />
 
-  <main class="min-h-screen flex flex-col bg-brand-50 pt-[72px]">
-    <!-- Hero area -->
-    <section class="flex-1 flex items-center justify-center px-5 py-24">
-      <div class="mx-auto max-w-2xl text-center">
-
-        <!-- Eyebrow -->
-        <p class="text-brand-500 text-sm font-semibold uppercase tracking-widest mb-6">
+  <main>
+    <!-- Section 1: Hero — brand-50 -->
+    <section class="relative z-[3] -mb-20 pt-[72px] pb-32 px-5 bg-brand-50">
+      <div class="mx-auto max-w-2xl text-center pt-16">
+        <p class="text-brand-500 text-sm font-semibold uppercase tracking-widest mb-5">
           Für Unternehmen
         </p>
-
-        <!-- Heading -->
         <h1 class="text-stone-900 text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6">
           Betriebliches<br />Gesundheitsmanagement
         </h1>
-
-        <!-- Body -->
-        <p class="text-stone-600 text-lg leading-relaxed mb-4 max-w-xl mx-auto">
+        <p class="text-stone-600 text-lg leading-relaxed mb-6 max-w-xl mx-auto">
           Gesunde, motivierte Mitarbeitende sind der Kern eines erfolgreichen Unternehmens. Ich entwickle mit euch maßgeschneiderte BGM-Programme – von Bewegungspausen bis zu Gesundheitstagen.
         </p>
-
-        <!-- Coming soon badge -->
-        <div class="inline-flex items-center gap-2 bg-white border border-brand-200 text-brand-600 text-sm font-medium px-5 py-2.5 rounded-full shadow-sm mb-10">
+        <div class="inline-flex items-center gap-2 bg-white border border-brand-200 text-brand-600 text-sm font-medium px-5 py-2.5 rounded-full shadow-sm">
           <svg class="w-4 h-4 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           Diese Seite ist in Kürze verfügbar
         </div>
+      </div>
 
-        <!-- What's coming -->
-        <div class="grid sm:grid-cols-3 gap-4 mb-12 text-left">
-          {[
-            {
-              icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
-              title: "Workshops & Kurse",
-              text: "Rückengesundheit, Stressmanagement und Bewegung am Arbeitsplatz.",
-            },
-            {
-              icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>`,
-              title: "Maßgeschneiderte Programme",
-              text: "Angebote, die zu eurem Unternehmen, eurem Team und euren Zielen passen.",
-            },
-            {
-              icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>`,
-              title: "Zertifiziert & anerkannt",
-              text: "Krankenkassenanerkannte Kurse – Bezuschussung durch den Arbeitgeber möglich.",
-            },
-          ].map((item) => (
-            <div class="bg-white rounded-2xl p-5 border border-brand-100 shadow-sm">
-              <span class="text-brand-500 [&>svg]:inline mb-3 block" set:html={item.icon} />
-              <h3 class="text-sm font-semibold text-stone-900 mb-1">{item.title}</h3>
-              <p class="text-xs text-stone-500 leading-relaxed">{item.text}</p>
+      <!-- Divider → white -->
+      <div class="absolute bottom-0 inset-x-0 h-20 pointer-events-none" aria-hidden="true">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="w-full h-full">
+          <path d="M 0,80 C 240,72 480,60 720,66 C 960,72 1200,60 1440,65 L 1440,80 Z" fill="white" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- Section 2: Offerings — white -->
+    <section class="relative z-[2] -mb-20 py-24 px-5 bg-white">
+      <div class="mx-auto max-w-4xl">
+        <div class="text-center mb-10">
+          <p class="text-brand-500 text-sm font-semibold uppercase tracking-widest mb-4">
+            Was ich anbiete
+          </p>
+          <h2 class="text-3xl md:text-4xl text-stone-900 leading-tight">
+            Gesundheit am Arbeitsplatz
+          </h2>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-5 mb-12">
+          {offerings.map((item) => (
+            <div class="bg-brand-50 rounded-2xl p-7 border border-brand-100 flex flex-col gap-3 hover:shadow-lg transition-shadow">
+              <span class="text-brand-500 [&>svg]:inline" set:html={item.icon} />
+              <h3 class="text-base font-semibold text-stone-900">{item.title}</h3>
+              <p class="text-sm text-stone-500 leading-relaxed flex-1">{item.text}</p>
             </div>
           ))}
         </div>
 
-        <!-- CTAs -->
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
           <a
             href={`mailto:hello@juliablum-personaltraining.de?subject=BGM-Anfrage`}
@@ -74,11 +96,43 @@ import Footer from '../components/Footer.astro';
             Jetzt Kontakt aufnehmen
           </a>
           <a
-            href={`${import.meta.env.BASE_URL}/`}
+            href={`${import.meta.env.BASE_URL}/#angebote`}
             class="inline-block text-center border border-brand-200 hover:border-brand-400 hover:bg-brand-100 text-brand-700 font-semibold px-8 py-4 rounded-full text-sm transition-colors"
           >
             Entdecke meine anderen Angebote →
           </a>
+        </div>
+      </div>
+
+      <!-- Divider → brand-50 -->
+      <div class="absolute bottom-0 inset-x-0 h-20 pointer-events-none" aria-hidden="true">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="w-full h-full">
+          <path d="M 0,80 L 0,68 C 360,58 720,72 1080,64 C 1260,60 1360,70 1440,66 L 1440,80 Z" fill="#f2f7e8" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- Section 3: References — brand-50 -->
+    <section class="relative z-[1] py-20 px-5 bg-brand-50">
+      <div class="mx-auto max-w-4xl text-center">
+        <p class="text-brand-500 text-sm font-semibold uppercase tracking-widest mb-3">
+          Referenzen
+        </p>
+        <h2 class="text-2xl md:text-3xl text-stone-900 mb-3 leading-tight">
+          Unternehmen, die ich begleiten durfte
+        </h2>
+        <p class="text-stone-500 text-sm mb-10 max-w-lg mx-auto leading-relaxed">
+          Ich habe bereits Institutionen und Unternehmen unterschiedlichster Größe und Branchen im Betrieblichen Gesundheitsmanagement unterstützt.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+          {clients.map((client) => (
+            <div class="flex items-center gap-2.5 bg-white border border-brand-100 rounded-full px-5 py-2.5 shadow-sm">
+              <svg class="w-3 h-3 shrink-0 text-brand-400 fill-current" viewBox="0 0 8 8">
+                <circle cx="4" cy="4" r="4"/>
+              </svg>
+              <span class="text-sm font-medium text-stone-700 whitespace-nowrap">{client}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

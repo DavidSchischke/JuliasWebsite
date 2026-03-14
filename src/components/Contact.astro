@@ -93,7 +93,7 @@
                 type="text"
                 required
                 autocomplete="name"
-                placeholder="Julia Muster"
+                placeholder="Anna Beispiel"
                 class="w-full rounded-xl border border-brand-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-transparent transition"
               />
             </div>
@@ -107,7 +107,7 @@
                 type="email"
                 required
                 autocomplete="email"
-                placeholder="julia@beispiel.de"
+                placeholder="anna@beispiel.de"
                 class="w-full rounded-xl border border-brand-200 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-transparent transition"
               />
             </div>
@@ -128,7 +128,7 @@
               <option value="gruppentraining">Gruppentraining</option>
               <option value="teen-training">Teen Training</option>
               <option value="praenatal">Prä- & Postnataltraining</option>
-              <option value="ruecken">Rückenfit-Kurs</option>
+              <option value="krankenkassenkurse">Krankenkassenzertifizierte Kurse</option>
               <option value="bgm">Betriebliches Gesundheitsmanagement</option>
               <option value="sonstiges">Sonstiges</option>
             </select>
@@ -189,6 +189,13 @@
 <script>
   const timeField = document.getElementById("form-time") as HTMLInputElement | null;
   if (timeField) timeField.value = String(Date.now());
+
+  // Pre-fill interest dropdown from URL query param (e.g. ?interesse=ruecken)
+  const urlInteresse = new URLSearchParams(window.location.search).get("interesse");
+  if (urlInteresse) {
+    const select = document.getElementById("interesse") as HTMLSelectElement | null;
+    if (select) select.value = urlInteresse;
+  }
 
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
   const errorBox = document.getElementById("form-error")!;

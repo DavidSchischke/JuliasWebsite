@@ -5,14 +5,13 @@ import img02 from '../../assets/Julia-Blum-Personal-Training-Trainingseinblicke-
 import img03 from '../../assets/Trainingseinblicke-Julia-Blum-Personal-Training-Koeln-7.jpg';
 import img04 from '../../assets/Julia-Blum-Personal-Training-Trainingseinblicke-Dehnen-1.jpg';
 import img05 from '../../assets/Trainingseinblicke-Julia-Blum-Personal-Training-Koeln-9.jpg';
-import img06 from '../../assets/Julia-Blum-SuperMama-Fitness.jpg';
 import img07 from '../../assets/Trainingseinblicke-Julia-Blum-Personal-Training-Koeln-12.jpg';
 import img08 from '../../assets/Julia-Blum-Personal-Training-Trainingseinblicke-Krafttraining-4.jpg';
 import img09 from '../../assets/Julia-Blum-Personal-Training-Trainingseinblicke-Dehnen-2.jpg';
 import img10 from '../../assets/Trainingseinblicke-Julia-Blum-Personal-Training-Koeln-5.jpg';
 import img11 from '../../assets/Julia-Blum-Personal-Training-Trainingseinblicke-Krafttraining-5.jpg';
 
-const photos = [img01, img02, img03, img04, img05, img06, img07, img08, img09, img10, img11];
+const photos = [img01, img02, img03, img04, img05, img07, img08, img09, img10, img11];
 ---
 
 <section class="relative z-[2] -mb-20 py-20 bg-white overflow-hidden">
@@ -28,20 +27,19 @@ const photos = [img01, img02, img03, img04, img05, img06, img07, img08, img09, i
     </p>
   </div>
 
-  <div class="overflow-hidden">
-      <div class="gallery-track flex gap-5 w-max">
-        {[...photos, ...photos].map((photo, i) => (
-          <div class="h-64 md:h-72 w-72 md:w-80 shrink-0 rounded-2xl overflow-hidden shadow-sm">
-            <Image
-              src={photo}
-              alt={`Trainingseinblick ${(i % photos.length) + 1}`}
-              class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-              widths={[400, 600]}
-              sizes="320px"
-            />
-          </div>
-        ))}
-      </div>
+  <div class="overflow-hidden pb-2" id="gallery-wrapper">
+    <div id="gallery-track" class="gallery-track">
+      {photos.map((photo, i) => (
+        <div class="gallery-item h-64 md:h-80 w-64 md:w-96 shrink-0 rounded-2xl overflow-hidden shadow-sm">
+          <Image
+            src={photo}
+            alt={`Trainingseinblick ${i + 1}`}
+            class="w-full h-full object-cover"
+            widths={[400, 600]}
+            sizes="384px"
+          />
+        </div>
+      ))}
     </div>
   </div>
 
@@ -55,13 +53,80 @@ const photos = [img01, img02, img03, img04, img05, img06, img07, img08, img09, i
 
 <style>
   .gallery-track {
-    animation: gallery-scroll 70s linear infinite;
-  }
-  .gallery-track:hover {
-    animation-play-state: paused;
-  }
-  @keyframes gallery-scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+    display: flex;
+    gap: 1.25rem;
+    width: max-content;
+    will-change: transform;
   }
 </style>
+
+<script>
+  const wrapper = document.getElementById('gallery-wrapper') as HTMLElement;
+  const track = document.getElementById('gallery-track') as HTMLElement;
+
+  if (wrapper && track) {
+    const SPEED = 0.5;         // px per frame auto-scroll
+    const RESUME_DELAY = 2000; // ms before auto-scroll resumes
+
+    // Duplicate items for seamless loop; measure period before duplication
+    const GAP = parseFloat(getComputedStyle(track).gap) || 20;
+    const origItems = Array.from(track.querySelectorAll<HTMLElement>('.gallery-item'));
+    const halfWidth = origItems.reduce((sum, item) => sum + item.offsetWidth + GAP, 0);
+    origItems.forEach((item) => {
+      const clone = item.cloneNode(true) as HTMLElement;
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+
+    let x = 0;
+    let autoScroll = true;
+    let resumeTimer: ReturnType<typeof setTimeout> | null = null;
+
+    function scheduleResume() {
+      if (resumeTimer) clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => { autoScroll = true; }, RESUME_DELAY);
+    }
+
+    function wrap() {
+      if (x < -halfWidth) x += halfWidth;
+      if (x > 0) x -= halfWidth;
+    }
+
+    function tick() {
+      if (autoScroll) x -= SPEED;
+      wrap();
+      track.style.transform = `translateX(${x}px)`;
+      requestAnimationFrame(tick);
+    }
+
+    // Pause auto-scroll on hover
+    wrapper.addEventListener('mouseenter', () => { autoScroll = false; });
+    wrapper.addEventListener('mouseleave', () => { autoScroll = true; });
+
+    // Desktop: mouse wheel scrolls the gallery
+    wrapper.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      autoScroll = false;
+      // Use horizontal delta if available (trackpad), otherwise vertical
+      x -= (Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY);
+      scheduleResume();
+    }, { passive: false });
+
+    // Mobile: touch swipe
+    let touchStartX = 0;
+    wrapper.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      autoScroll = false;
+    }, { passive: true });
+
+    wrapper.addEventListener('touchmove', (e) => {
+      const delta = e.touches[0].clientX - touchStartX;
+      touchStartX = e.touches[0].clientX;
+      x += delta;
+    }, { passive: true });
+
+    wrapper.addEventListener('touchend', scheduleResume, { passive: true });
+
+    requestAnimationFrame(tick);
+  }
+</script>

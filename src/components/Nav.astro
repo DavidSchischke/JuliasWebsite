@@ -2,10 +2,11 @@
 import { Image } from 'astro:assets';
 import logo from '../../assets/Logo-Julia-Blum-Personal-Training_500-1.png';
 
+const base = import.meta.env.BASE_URL;
+
 const links = [
-  { label: "Angebote",   href: "#angebote" },
-  { label: "Über mich",  href: "#ueber-mich" },
-  { label: "Kontakt",    href: "#kontakt" },
+  { label: "Angebote",   href: `${base}/#angebote` },
+  { label: "Über mich",  href: `${base}/#ueber-mich` },
 ];
 ---
 
@@ -20,6 +21,7 @@ const links = [
         src={logo}
         alt="Julia Blum Personal Training"
         height={48}
+        densities={[1, 2, 3]}
         class="h-12 w-auto"
       />
     </a>
@@ -35,10 +37,10 @@ const links = [
         </a>
       ))}
       <a
-        href="#kontakt"
+        href={`${base}/#kontakt`}
         class="bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
       >
-        Erstgespräch buchen
+        Kontakt aufnehmen
       </a>
     </nav>
 
@@ -72,10 +74,10 @@ const links = [
       </a>
     ))}
     <a
-      href="#kontakt"
+      href={`${base}/#kontakt`}
       class="mt-2 inline-block text-center bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-5 py-3 rounded-full transition-colors"
     >
-      Erstgespräch buchen
+      Kontakt aufnehmen
     </a>
   </div>
 </header>

@@ -2,12 +2,27 @@
 import { Image } from 'astro:assets';
 import consultingImg from '../../assets/Trainingseinblicke-Julia-Blum-Personal-Training-Koeln-5.jpg';
 
-const qualifications = [
-  "Staatlich geprüfte Personal Trainerin (B.A. Sportwissenschaft)",
-  "Krankenkassenanerkannte Kursleiterin (ZPP-zertifiziert)",
-  "Spezialisierung: Prä- & Postnataltraining",
-  "Spezialisierung: Rückengesundheit & funktionelle Bewegung",
-  "Mitglied bei PersonalFitness.de",
+const studium = [
+  "B.A. Sport- und Bewegungsvermittlung im Freizeit- und Breitensport, Deutsche Sporthochschule Köln",
+];
+
+const zertifikate = [
+  "Fitnesstrainer A-Lizenz",
+  "Fitnesstrainer B-Lizenz",
+  "DOSB Übungsleiter-C-Lizenz",
+  "Prä- und Postnatale Fitnesstrainerin (superMAMAfitness)",
+  "Sportmassage",
+  "DLRG Rettungsschwimmer Abzeichen (Silber)",
+];
+
+const weiterbildungen = [
+  "Pilates Instructor",
+  "Kinesiologisches Taping",
+  "Mentalcoaching",
+  "Sport und Ernährung",
+  "Recovery Expert",
+  "Functional Training – Rehabilitation",
+  "Functional Training – Koordination & Flexibilität",
 ];
 
 const values = [
@@ -33,7 +48,7 @@ const values = [
   <div class="mx-auto max-w-6xl">
     <!-- Top: 2-col bio -->
     <div class="grid md:grid-cols-2 gap-14 items-center mb-14">
-      <!-- Photo with PersonalFitness badge -->
+      <!-- Photo -->
       <div class="relative">
         <div class="rounded-2xl overflow-hidden aspect-[4/3] shadow-md">
           <Image
@@ -54,36 +69,21 @@ const values = [
         <h2
           class="text-4xl md:text-5xl text-stone-900 mb-6 leading-tight"
         >
-          Bewegung, die<br />wirklich passt
+          Meine Trainingsphilosophie
         </h2>
         <div class="space-y-4 text-stone-600 text-base leading-relaxed">
           <p>
-            Sport hat mein Leben geprägt – und mich gelehrt, dass Bewegung so viel mehr ist als ein Mittel zum Zweck. Sie ist Ausdruck, Ausgleich und eine der besten Investitionen in die eigene Gesundheit.
+            Personal Training ist für mich etwas ganz Besonderes: individuell, persönlich und die bestmögliche Unterstützung auf dem Weg zu Deinem Ziel. Jedes Training wird individuell auf Deine Bedürfnisse und Dein Fitnesslevel abgestimmt.
           </p>
           <p>
-            Als Personal Trainerin in Köln Lindenthal begleite ich Menschen jeden Alters und Fitnessniveaus. Meine Klientinnen und Klienten schätzen besonders, dass ich mir wirklich Zeit nehme – für ein gründliches Erstgespräch, für sorgfältige Planung und für ehrliches Feedback.
+            Mir ist dabei besonders wichtig zu zeigen, dass Bewegung und Sport Spaß machen und uns körperlich wie mental stärken. Gemeinsam definieren wir Dein persönliches Ziel und arbeiten Schritt für Schritt daran.
           </p>
-          <p>
-            Ob du gerade nach deiner Schwangerschaft in deinen Körper zurückfindest, mit Rückenproblemen kämpfst oder einfach gesünder und aktiver leben möchtest – ich bin deine Ansprechpartnerin.
-          </p>
-        </div>
-
-        <!-- Qualifications list -->
-        <div class="mt-8 space-y-2.5">
-          {qualifications.map((q) => (
-            <div class="flex items-start gap-3">
-              <svg class="w-4 h-4 mt-0.5 shrink-0 text-brand-400 fill-current" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zm3.28 5.28a.75.75 0 00-1.06-1.06L7 8.44 5.78 7.22a.75.75 0 00-1.06 1.06l1.75 1.75a.75.75 0 001.06 0l3.75-3.75z" clip-rule="evenodd"/>
-              </svg>
-              <span class="text-sm text-stone-700">{q}</span>
-            </div>
-          ))}
         </div>
       </div>
     </div>
 
     <!-- Values row -->
-    <div class="grid sm:grid-cols-3 gap-6">
+    <div class="grid sm:grid-cols-3 gap-6 mb-14">
       {values.map((v) => (
         <div class="bg-white rounded-2xl p-7 border border-brand-100 shadow-sm">
           <div class="w-11 h-11 rounded-xl bg-brand-500 text-white flex items-center justify-center mb-4" set:html={v.icon} />
@@ -92,9 +92,84 @@ const values = [
         </div>
       ))}
     </div>
+
+    <!-- Qualifications: 3 columns -->
+    <div>
+      <p class="text-brand-500 text-sm font-semibold uppercase tracking-widest mb-6 text-center">
+        Qualifikationen
+      </p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Studium -->
+        <div class="bg-white rounded-2xl p-7 border border-brand-100 shadow-sm">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-lg bg-brand-500 text-white flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+              </svg>
+            </div>
+            <h3 class="text-base font-semibold text-stone-900">Studium</h3>
+          </div>
+          <ul class="space-y-3">
+            {studium.map((item) => (
+              <li class="flex items-start gap-2.5 text-sm text-stone-600 leading-relaxed">
+                <svg class="w-4 h-4 mt-0.5 shrink-0 text-brand-400 fill-current" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zm3.28 5.28a.75.75 0 00-1.06-1.06L7 8.44 5.78 7.22a.75.75 0 00-1.06 1.06l1.75 1.75a.75.75 0 001.06 0l3.75-3.75z" clip-rule="evenodd"/>
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Zertifikate -->
+        <div class="bg-white rounded-2xl p-7 border border-brand-100 shadow-sm">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-lg bg-brand-500 text-white flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+            </div>
+            <h3 class="text-base font-semibold text-stone-900">Zertifikate</h3>
+          </div>
+          <ul class="space-y-3">
+            {zertifikate.map((item) => (
+              <li class="flex items-start gap-2.5 text-sm text-stone-600 leading-relaxed">
+                <svg class="w-4 h-4 mt-0.5 shrink-0 text-brand-400 fill-current" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zm3.28 5.28a.75.75 0 00-1.06-1.06L7 8.44 5.78 7.22a.75.75 0 00-1.06 1.06l1.75 1.75a.75.75 0 001.06 0l3.75-3.75z" clip-rule="evenodd"/>
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Weiterbildungen -->
+        <div class="bg-white rounded-2xl p-7 border border-brand-100 shadow-sm">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-lg bg-brand-500 text-white flex items-center justify-center shrink-0">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 class="text-base font-semibold text-stone-900">Weiterbildungen</h3>
+          </div>
+          <ul class="space-y-3">
+            {weiterbildungen.map((item) => (
+              <li class="flex items-start gap-2.5 text-sm text-stone-600 leading-relaxed">
+                <svg class="w-4 h-4 mt-0.5 shrink-0 text-brand-400 fill-current" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zm3.28 5.28a.75.75 0 00-1.06-1.06L7 8.44 5.78 7.22a.75.75 0 00-1.06 1.06l1.75 1.75a.75.75 0 001.06 0l3.75-3.75z" clip-rule="evenodd"/>
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Diagonal divider → white wedge pointing into Contact -->
+  <!-- Diagonal divider → white wedge pointing into Gallery -->
   <div class="absolute bottom-0 inset-x-0 h-20 pointer-events-none" aria-hidden="true">
     <svg viewBox="0 0 1440 80" preserveAspectRatio="none" class="w-full h-full">
       <path d="M 0,80 C 240,70 480,60 720,67 C 960,74 1200,62 1440,67 L 1440,80 Z" fill="white" />
