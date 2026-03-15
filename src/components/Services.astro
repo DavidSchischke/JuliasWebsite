@@ -8,7 +8,7 @@ const mainServices = [
     title: "Personal Training 1:1",
     description: "Vollständig auf dich zugeschnittene Einheiten – bei dir Zuhause oder im Freien. Wir arbeiten gemeinsam an deinen Zielen: Kraft, Ausdauer, Beweglichkeit oder einfach mehr Wohlbefinden im Alltag. Durch persönliche Anleitung, gezielte Übungen und kontinuierliche Technikkorrektur trainierst du effektiv und sicher.",
     features: ["Individuelle Trainingsgestaltung", "Technikkorrektur & Begleitung", "Trainingsfortschritt & Wohlbefinden"],
-    price: "ab 99 €",
+    price: "99 €",
     priceSub: "60 Min · 149 € für 90 Min",
     highlight: true,
     interesse: "personal-training",
@@ -147,8 +147,23 @@ const specialServices = [
       ))}
     </div>
 
+    <!-- Mobile-only toggle button -->
+    <div class="flex justify-center mb-6 md:hidden">
+      <button
+        id="toggle-secondary"
+        class="flex items-center gap-2 text-sm font-semibold text-brand-600 border border-brand-300 rounded-full px-5 py-2.5 hover:bg-brand-50 transition-colors"
+        aria-expanded="false"
+        aria-controls="secondary-services"
+      >
+        <span id="toggle-label">Weitere Angebote anzeigen</span>
+        <svg id="toggle-icon" class="w-4 h-4 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+    </div>
+
     <!-- Secondary 3 cards -->
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-10">
+    <div id="secondary-services" class="hidden md:grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-10">
       {specialServices.map((s) => (
         <div class="bg-brand-50 rounded-2xl p-6 border border-brand-100 flex flex-col gap-3 hover:shadow-lg transition-shadow">
           <span class="text-brand-500 [&>svg]:inline" set:html={s.icon} />
@@ -232,5 +247,27 @@ const specialServices = [
       const select = document.getElementById('interesse') as HTMLSelectElement | null;
       if (select && val) select.value = val;
     });
+  });
+
+  const toggleBtn = document.getElementById('toggle-secondary');
+  const secondaryGrid = document.getElementById('secondary-services');
+  const toggleLabel = document.getElementById('toggle-label');
+  const toggleIcon = document.getElementById('toggle-icon');
+
+  toggleBtn?.addEventListener('click', () => {
+    const isHidden = secondaryGrid?.classList.contains('hidden');
+    if (isHidden) {
+      secondaryGrid?.classList.remove('hidden');
+      secondaryGrid?.classList.add('grid');
+      if (toggleLabel) toggleLabel.textContent = 'Weniger anzeigen';
+      toggleIcon?.classList.add('rotate-180');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+    } else {
+      secondaryGrid?.classList.add('hidden');
+      secondaryGrid?.classList.remove('grid');
+      if (toggleLabel) toggleLabel.textContent = 'Weitere Angebote anzeigen';
+      toggleIcon?.classList.remove('rotate-180');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }
   });
 </script>
